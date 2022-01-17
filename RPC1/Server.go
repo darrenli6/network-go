@@ -20,6 +20,16 @@ func (mu *MathUtil) CalculateCircleArea(req float32,resp *float32) error{
 }
 
 
+type AddPrama struct {
+	Arg1 float32
+	Arg2 float32
+}
+
+func (mu *MathUtil) Add (param AddPrama,resp *float32) error{
+	*resp = param.Arg1 + param.Arg2
+	return nil
+}
+
 func main(){
 
 
@@ -28,7 +38,9 @@ func main(){
 
 
 	  // 注册
-	  err:=rpc.Register(mathUtil)
+	  //err:=rpc.Register(mathUtil)
+
+	  err:=rpc.RegisterName("gogogo",mathUtil)
 
 
 	  if err!=nil{
